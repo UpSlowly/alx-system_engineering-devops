@@ -1,2 +1,9 @@
 #!/bin/bash
-cut -c 1 | paste -s -d ''
+first_letters=$(cut -c 1 acrostic.txt)
+decoded_text=""
+for letter in $first_letters; do
+  decoded_word=$(grep "^$letter" dictionary.txt | head -n 1)
+  decoded_text="$decoded_text $decoded_word"
+done
+# Print the decoded text
+echo $decoded_text
