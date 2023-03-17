@@ -1,2 +1,2 @@
 #!/bin/bash
-declare
+declare -F | awk '{print $3}'
