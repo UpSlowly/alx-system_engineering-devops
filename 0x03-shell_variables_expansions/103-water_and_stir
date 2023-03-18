@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# get the values of the environment variables WATER and STIR
+water=$WATER
+stir=$STIR
+
+# convert the values of WATER and STIR from their respective bases (water and stir) to base 10
+water_dec=$(echo "$water" | base64 -d)
+stir_dec=$(echo "$stir" | base64 -d)
+
+# add the two numbers and convert the result to base bestchol
+result_dec=$(($water_dec + $stir_dec))
+result_bestchol=$(echo "obase=bestchol; $result_dec" | bc)
+
+# print the result
+echo "The result is: $result_bestchol"
